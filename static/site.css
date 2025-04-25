@@ -1,0 +1,151 @@
+/*
+  Modern CSS Reset via https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+html {
+  --color-background: #fff4ed;
+  --color-foreground: #2c2c2c;
+  --color-accent-primary: #f73e00;
+
+  --font-standard: sans-serif;
+}
+
+html,
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-standard);
+  margin: 0;
+  padding: 0;
+}
+
+[role="banner"] {
+  position: relative;
+}
+
+[role="banner"] video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.banner-contents {
+  position: relative;
+  z-index: 1;
+}
+
+.banner-title {
+  color: white;
+  font-size: 10vw;
+  line-height: 0.9;
+  margin: 0;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.banner-marquee {
+  color: var(--color-accent-primary);
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  position: absolute;
+  z-index: 1;
+}
+
+.marquee-contents {
+  animation: marquee 18s linear infinite;
+  display: inline-flex;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.marquee-contents span {
+  display: inline-block;
+  line-height: 1;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
