@@ -1,0 +1,13 @@
+{
+  "name": "fairweather-ride",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A dumb website about tyler and his bike.",
+  "scripts": {
+    "start": "live-server --port=8000 --host=localhost"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "1.2.2"
+  }
+}
