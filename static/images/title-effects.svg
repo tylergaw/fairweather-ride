@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
   <defs>
     <filter id="title-blobs">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
       <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 12 -5" result="title-blobs" />
       <feBlend in="SourceGraphic" in2="title-blobs" />
     </filter>
