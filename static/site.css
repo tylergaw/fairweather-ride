@@ -125,30 +125,36 @@ body {
 }
 
 [role="banner"] {
+  --offset: 0.75rem;
   position: relative;
+  height: calc(100vh - var(--offset));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .banner-contents {
-  --offset: 0.75rem;
   background: var(--color-accent-primary);
   border-radius: 1rem 1rem 0 0;
-  top: var(--offset);
+  flex: 1;
   left: var(--offset);
   margin-bottom: var(--offset);
   max-width: 100%;
   overflow: hidden;
   position: relative;
+  top: var(--offset);
   width: calc(100% - var(--offset) * 2);
 }
 
 .banner-title {
   color: var(--color-background);
-  font-size: 11.5vw;
+  font-size: 11.8vw;
   line-height: 0.83;
   margin: 0;
   overflow: hidden;
   position: absolute;
   text-transform: uppercase;
+  z-index: 2;
 }
 
 .title-effected {
@@ -199,6 +205,9 @@ body {
 }
 
 .banner-video {
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
   width: 100%;
 }
 
