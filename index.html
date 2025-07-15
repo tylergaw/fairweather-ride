@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fairweather Ride 2025 - Tyler Gaw</title>
     <link rel="stylesheet" href="./static/site.css" />
-    <script src="./static/site.js" async></script>
+    <script type="module" src="./static/site.js"></script>
   </head>
   <body>
     <header role="banner">
       <div class="banner-contents">
         <h1 class="banner-title">
           <div class="title-effected">
-            <span class="fair">Fairweather</span> <span class="ride">Ride</span>
+            <span class="title-fair">Fairweather</span>
+            <span class="title-ride">Ride</span>
           </div>
           <div class="banner-subtitle">
-            <span class="year">2025</span>
+            <span class="title-year">2025</span>
             <span class="who-what"
               >A silly website about
               <a href="https://tylergaw.com">Tyler</a> and his bike</span
@@ -64,8 +65,13 @@
     </div>
 
     <div class="progress">Progress meter</div>
-    <div class="stats">Stats</div>
-    <div class="rides">All the rides</div>
+    <div class="stats">
+      <h2>Stats</h2>
+    </div>
+    <div class="rides" id="the-rides">
+      <h2>The Rides</h2>
+      <ol id="rides-list" reversed></ol>
+    </div>
 
     <footer class="credits">
       <div class="credits-contents">Credits</div>
