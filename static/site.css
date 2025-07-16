@@ -120,6 +120,10 @@ html {
   --font-standard: "method-book", arial, sans-serif;
 }
 
+::selection {
+  background-color: var(--color-accent-secondary);
+}
+
 html,
 body {
   background: var(--color-background);
@@ -315,8 +319,39 @@ body {
   padding: 3rem 0.75rem;
 }
 
+#stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.stat {
+  align-items: center;
+  background: var(--color-accent-primary);
+  border-radius: 1rem;
+  color: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 300px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.stat-detail {
+  display: block;
+  font-family: "adhd-distracted";
+  font-size: 3.5rem;
+  line-height: 0.875;
+  margin-top: 0.5rem;
+}
+
+.stat-detail small {
+  font-size: 75%;
+}
+
 .rides {
-  padding: 3rem 0.75rem;
+  padding: 3rem 0.75rem 0 0.75rem;
 }
 
 #rides-list {
@@ -376,7 +411,7 @@ body {
 
 .ride-distance {
   color: var(--color-accent-primary);
-  font-family: "adhd-focused";
+  font-family: "adhd-impulsive";
   font-size: 2.25rem;
   line-height: 1.1;
 }

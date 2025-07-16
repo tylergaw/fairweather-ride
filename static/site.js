@@ -52,14 +52,55 @@ function renderRides() {
 renderRides();
 
 function renderStats() {
+  const el = document.getElementById('stats-container')
   const numRides = rides.length;
-  const totalDistance = rides.reduce((distance, ride) => {
-    return distance + ride.distance;
-  }, 0);
+
+  let distances = []
+  let totalDistance = 0
+  let totalTime = 0
+
+  for (let i = 0; i < numRides; i++) {
+    distances.push(rides[i].distance)
+    totalDistance += rides[i].distance
+    totalTime += rides[i].moving_time
+  }
+
+  distances.sort()
   const avgDistance = totalDistance / numRides
+  const timeParts = getTimeParts(totalTime)
   
-  console.log('total', metersToMiles(totalDistance))
-  console.log('avg', metersToMiles(avgDistance))
+  el.innerHTML = `
+    <div class="stat">
+      <span class="stat-title">Total rides</span>
+      <span class="stat-detail">${numRides}</span>
+    </div>
+    <div class="stat">
+      <span class="stat-title">Total distance</span>
+      <span class="stat-detail">${metersToMiles(totalDistance)} <small>mi</small></span>
+    </div>
+    <div class="stat">
+      <span class="stat-title">Avg. distance</span>
+      <span class="stat-detail">${metersToMiles(avgDistance)} <small>mi</small></span>
+    </div>
+    <div class="stat">
+      <span class="stat-title">Longest ride</span>
+      <span class="stat-detail">${metersToMiles(distances[distances.length - 1])} <small>mi</small></span>
+    </div>
+    <div class="stat">
+      <span class="stat-title">Total moving time</span>
+      <span class="stat-detail">${timeParts.days}<small>d</small> ${timeParts.hours}<small>hr</small> ${timeParts.minutes}<small>min</small></span>
+    </div>
+    <div class="stat">
+      <span class="stat-title">Times hit by a car</span>
+      <span class="stat-detail">1</span>
+    </div>
+    <div class="stat">
+      <span class="stat-title">Boroughs</span>
+      <span class="stat-detail">4</span>
+      <small>(we don’t go to that other one)</small>
+     </div>
+     <div class="stat"></div>
+  `
 }
 
 renderStats()
@@ -104,4 +145,16 @@ function getOrdinalSuffix(n) {
     default:
       return "th";
   }
+}
+
+/**
+ * 
+ * @param {number} seconds 
+ * @returns {{ days: number, hours: number, minutes: number }}
+ */
+function getTimeParts(seconds) {
+  const days = Math.floor(seconds / 86400); // 60 * 60 * 24
+  const hours = Math.floor((seconds % 86400) / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  return { days, hours, minutes };
 }
