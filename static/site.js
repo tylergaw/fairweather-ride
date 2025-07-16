@@ -24,21 +24,25 @@ function renderRides() {
     const strokeWidth = "2";
     const strokeColor = "f73e00"
     const encodedPolyline = encodeURIComponent(ride.map.summary_polyline);
-    const size = "400x600";
+    const imgWidth = 400;
+    const imgHeight = 600;
+    const size = `${imgWidth}x${imgHeight}`;
     const padding = "100,40,40";
     const mapUrl = `https://api.mapbox.com/styles/v1/mapbox/${style}/static/path-${strokeWidth}+${strokeColor}-1(${encodedPolyline})/auto/${size}?attribution=false&padding=${padding}&access_token=${mapboxToken}`;
 
     html += `<li id='ride-${ride.id}' class="ride">
-      <div class="ride-content">
-        <p class="ride-meta">
-          <b>${rides.length - i}</b>
-          <time datetime="${ride.start_date}">${formatDate(
-        ride.start_date
-      )}</time>
-        </p>
-        <p class="ride-distance">${metersToMiles(ride.distance)} <small>mi</small></p>
-      </div>
-      <img src="${mapUrl}" alt="Ride map" />
+      <a href="https://www.strava.com/activities/${ride.id}">
+        <div class="ride-content">
+          <p class="ride-meta">
+            <b>${rides.length - i}</b>
+            <time datetime="${ride.start_date}">${formatDate(
+          ride.start_date
+        )}</time>
+          </p>
+          <p class="ride-distance">${metersToMiles(ride.distance)} <small>mi</small></p>
+        </div>
+        <img src="${mapUrl}" alt="Ride map" width="${imgWidth}" height="${imgHeight}" />
+      </a>
     </li>`;
 
     return html;
