@@ -19,10 +19,10 @@ function renderRides() {
 
   el.innerHTML = rides.reduce((html, ride, i) => {
     if (ride.sport_type !== "Ride") return html;
-  
+
     const style = "dark-v11"; // streets-v12
     const strokeWidth = "2";
-    const strokeColor = "f73e00"
+    const strokeColor = "f73e00";
     const encodedPolyline = encodeURIComponent(ride.map.summary_polyline);
     const imgWidth = 400;
     const imgHeight = 600;
@@ -36,10 +36,12 @@ function renderRides() {
           <p class="ride-meta">
             <b>${rides.length - i}</b>
             <time datetime="${ride.start_date}">${formatDate(
-          ride.start_date
-        )}</time>
+      ride.start_date
+    )}</time>
           </p>
-          <p class="ride-distance">${metersToMiles(ride.distance)} <small>mi</small></p>
+          <p class="ride-distance">${metersToMiles(
+            ride.distance
+          )} <small>mi</small></p>
         </div>
         <img src="${mapUrl}" alt="Ride map" width="${imgWidth}" height="${imgHeight}" />
       </a>
@@ -52,23 +54,23 @@ function renderRides() {
 renderRides();
 
 function renderStats() {
-  const el = document.getElementById('stats-container')
+  const el = document.getElementById("stats-container");
   const numRides = rides.length;
 
-  let distances = []
-  let totalDistance = 0
-  let totalTime = 0
+  let distances = [];
+  let totalDistance = 0;
+  let totalTime = 0;
 
   for (let i = 0; i < numRides; i++) {
-    distances.push(rides[i].distance)
-    totalDistance += rides[i].distance
-    totalTime += rides[i].moving_time
+    distances.push(rides[i].distance);
+    totalDistance += rides[i].distance;
+    totalTime += rides[i].moving_time;
   }
 
-  distances.sort()
-  const avgDistance = totalDistance / numRides
-  const timeParts = getTimeParts(totalTime)
-  
+  distances.sort();
+  const avgDistance = totalDistance / numRides;
+  const timeParts = getTimeParts(totalTime);
+
   el.innerHTML = `
     <div class="stat">
       <span class="stat-title">Total rides</span>
@@ -76,19 +78,27 @@ function renderStats() {
     </div>
     <div class="stat">
       <span class="stat-title">Total distance</span>
-      <span class="stat-detail">${metersToMiles(totalDistance)} <small>mi</small></span>
+      <span class="stat-detail">${metersToMiles(
+        totalDistance
+      )} <small>mi</small></span>
     </div>
     <div class="stat">
       <span class="stat-title">Avg. distance</span>
-      <span class="stat-detail">${metersToMiles(avgDistance)} <small>mi</small></span>
+      <span class="stat-detail">${metersToMiles(
+        avgDistance
+      )} <small>mi</small></span>
     </div>
     <div class="stat">
       <span class="stat-title">Longest ride</span>
-      <span class="stat-detail">${metersToMiles(distances[distances.length - 1])} <small>mi</small></span>
+      <span class="stat-detail">${metersToMiles(
+        distances[distances.length - 1]
+      )} <small>mi</small></span>
     </div>
     <div class="stat">
       <span class="stat-title">Total moving time</span>
-      <span class="stat-detail">${timeParts.days}<small>d</small> ${timeParts.hours}<small>hr</small> ${timeParts.minutes}<small>min</small></span>
+      <span class="stat-detail">${timeParts.days}<small>d</small> ${
+    timeParts.hours
+  }<small>hr</small> ${timeParts.minutes}<small>min</small></span>
     </div>
     <div class="stat">
       <span class="stat-title">Times hit by a car</span>
@@ -99,10 +109,23 @@ function renderStats() {
       <span class="stat-detail">4</span>
       <small>(we don’t go to that other one)</small>
      </div>
-  `
+  `;
+
+  const progress = document.getElementById("progress")
+  const percentComplete = `${(
+    (metersToMiles(totalDistance) / 1000) *
+    100
+  ).toFixed(2)}`;
+  progress.style.setProperty("--percent-complete", `${percentComplete}%`);
+
+  const displayEl = document.getElementById("meter-complete");
+  displayEl.innerHTML = `${metersToMiles(totalDistance)} <small>mi</small>`;
+
+  const percentDisplayEl = document.getElementById("progress-percentage")
+  percentDisplayEl.innerText = `${percentComplete}% complete`
 }
 
-renderStats()
+renderStats();
 
 /**
  * Convert meters to miles.
@@ -147,8 +170,8 @@ function getOrdinalSuffix(n) {
 }
 
 /**
- * 
- * @param {number} seconds 
+ *
+ * @param {number} seconds
  * @returns {{ days: number, hours: number, minutes: number }}
  */
 function getTimeParts(seconds) {

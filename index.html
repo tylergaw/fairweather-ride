@@ -64,7 +64,21 @@
       </p>
     </div>
 
-    <div class="progress">Progress meter</div>
+    <div id="progress" class="progress">
+      <div id="meter" class="meter">
+        <div class="meter-well">
+          <div class="meter-progress">
+            <span id="meter-complete" class="meter-complete-display"></span>
+          </div>
+        </div>
+      </div>
+      <div id="progress-percentage" class="progress-percentage"></div>
+      <div class="progress-ticks">
+        <span class="progress-tick">0</span>
+        <span class="progress-tick">1,000 miles</span>
+      </div>
+    </div>
+
     <div class="stats" id="stats">
       <h2 class="section-heading">
         <span class="content">Stats</span>
