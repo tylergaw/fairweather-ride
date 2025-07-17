@@ -22,7 +22,7 @@ function renderRides() {
 
     const style = "dark-v11"; // streets-v12
     const strokeWidth = "2";
-    const strokeColor = "f73e00";
+    const strokeColor = "ff0055";
     const encodedPolyline = encodeURIComponent(ride.map.summary_polyline);
     const imgWidth = 400;
     const imgHeight = 600;

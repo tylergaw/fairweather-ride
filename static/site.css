@@ -119,8 +119,8 @@ h6 {
 html {
   --color-background: #fff4ed;
   --color-foreground: #2c2c2c;
-  --color-accent-primary: #f73e00;
-  --color-accent-secondary: #adc128;
+  --color-accent-primary: #ff0055;
+  --color-accent-secondary: #c7e409;
 
   --font-standard: "method-book", arial, sans-serif;
 }
@@ -255,19 +255,15 @@ body {
 .who-what {
   display: block;
   font-size: clamp(0.75rem, 2vw, 1.1rem);
-  font-family: "method-regular", sans-serif;
   line-height: 1;
-  opacity: 0.8;
+  opacity: 0.9;
   text-transform: none;
 }
 
 .who-what a {
+  border-bottom: 2px solid currentColor;
   color: inherit;
   text-decoration: none;
-}
-
-.who-what a:hover {
-  text-decoration: underline;
 }
 
 .banner-video {
