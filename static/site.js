@@ -99,7 +99,6 @@ function renderStats() {
       <span class="stat-detail">4</span>
       <small>(we don’t go to that other one)</small>
      </div>
-     <div class="stat"></div>
   `
 }
 

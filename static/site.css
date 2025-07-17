@@ -111,6 +111,11 @@ h6 {
   src: url("./fonts/Method-Book.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: "macabre";
+  src: url("./fonts/Macabre-Regular.woff2") format("woff2");
+}
+
 html {
   --color-background: #fff4ed;
   --color-foreground: #2c2c2c;
@@ -122,6 +127,58 @@ html {
 
 ::selection {
   background-color: var(--color-accent-secondary);
+}
+
+.section-heading {
+  overflow: hidden;
+  font-family: "macabre";
+}
+
+.section-heading .content {
+  display: inline-block;
+  font-size: 3.5rem;
+  transform: scaleX(3);
+  transform-origin: left;
+}
+
+.section-heading .falloff {
+  display: inline-flex;
+  font-size: 3.5rem;
+  transform: translateX(10.75rem);
+}
+
+.section-heading .falloff span {
+  transform-origin: left;
+}
+
+.section-heading .falloff span:nth-of-type(1) {
+  font-size: 3rem;
+  transform: scaleX(2.75) rotate(1deg);
+}
+
+.section-heading .falloff span:nth-of-type(2) {
+  font-size: 2.5rem;
+  transform: scaleX(2.5) translate(3.25rem, 0.65rem) rotate(3deg);
+}
+
+.section-heading .falloff span:nth-of-type(3) {
+  font-size: 2rem;
+  transform: scaleX(2.25) translate(6.15rem, 1.5rem) rotate(4deg);
+}
+
+.section-heading .falloff span:nth-of-type(4) {
+  font-size: 1.5rem;
+  transform: scaleX(2) translate(8.8rem, 2.4rem) rotate(7deg);
+}
+
+.section-heading .falloff span:nth-of-type(5) {
+  font-size: 1rem;
+  transform: scaleX(1.75) translate(11.3rem, 3.3rem) rotate(9deg);
+}
+
+.section-heading .falloff span:nth-of-type(6) {
+  font-size: 0.6rem;
+  transform: scaleX(1.5) translate(13.9rem, 4rem) rotate(10deg);
 }
 
 html,
@@ -239,15 +296,10 @@ body {
   background: var(--color-foreground);
   border-radius: 0 0 1rem 1rem;
   color: var(--color-background);
-  display: flex;
-  font-size: 1rem;
   font-family: "adhd-impulsive";
-  margin: 0 auto;
+  font-size: 1rem;
   padding: 0.3rem 0;
-  overflow: hidden;
-  white-space: nowrap;
   width: calc(100% - var(--offset) * 2);
-  z-index: 1;
 }
 
 .banner-marquee b:nth-child(2n) {
@@ -259,11 +311,23 @@ body {
   font-family: "adhd-distracted";
 }
 
+.marquee {
+  display: flex;
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 1;
+}
+
 .marquee-contents {
   animation: marquee 18s linear infinite;
   display: inline-flex;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.reversed .marquee-contents {
+  animation-direction: reverse;
 }
 
 .marquee-contents span {
