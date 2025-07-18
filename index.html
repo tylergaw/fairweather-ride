@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fairweather Ride 2025 - Tyler Gaw</title>
+
     <link rel="stylesheet" href="./static/site.css" />
     <script type="module" src="./static/site.js"></script>
   </head>
@@ -55,7 +56,7 @@
         The goal is one thousand miles on the bike in 2025. This will be hard
         for me. No spandex kit, no clip-ins, no carbon frame<sup>*</sup>. Just
         me in some jorts on an old beat up ten speed. Riding when it’s warm,
-        sunny, and the headwinds are low. It’s the Fairweather Ride.
+        sunny, and headwinds are low. It’s the Fairweather Ride.
       </p>
 
       <p class="the-joke">
@@ -79,9 +80,19 @@
       </div>
     </div>
 
+    <div class="divider" aria-hidden="true">
+      <div class="divider-content">
+        1,000 miles fairweather ride bikes bikes bikes fuck cars 1,000 miles
+        fairweather ride bikes bikes bikes fuck cars fairweatherride
+        bikesarefun.com 1000miles nyc ridebikes bikesarefun go outside touch
+        grass get rekt 1000miles fairweather ride bikes bikes bikes fuck cars
+        1,000
+      </div>
+    </div>
+
     <div class="stats" id="stats">
       <h2 class="section-heading">
-        <span class="content">Stats</span>
+        <span class="content">The Stats</span>
         <div aria-hidden="true" class="falloff">
           <span>Stats</span>
           <span>Stats</span>
@@ -172,7 +183,7 @@
 
     <div class="rides" id="rides">
       <h2 class="section-heading">
-        <span class="content">Rides</span>
+        <span class="content">The Rides</span>
         <div aria-hidden="true" class="falloff">
           <span>Rides</span>
           <span>Rides</span>
@@ -185,6 +196,16 @@
       <ol id="rides-list" reversed></ol>
     </div>
 
+    <div class="divider" aria-hidden="true">
+      <div class="divider-content">
+        1,000 miles fairweather ride bikes bikes bikes fuck cars 1,000 miles
+        fairweather ride bikes bikes bikes fuck cars fairweatherride
+        bikesarefun.com 1000miles nyc ridebikes bikesarefun go outside touch
+        grass get rekt 1000miles fairweather ride bikes bikes bikes fuck cars
+        1,000
+      </div>
+    </div>
+
     <footer class="credits">
       <div class="credits-contents">
         <h2>Credits</h2>
@@ -195,4 +216,86 @@
       </div>
     </footer>
   </body>
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    version="1.1"
+    aria-hidden="true"
+    style="display: none"
+  >
+    <defs>
+      <filter id="title-blobs">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+        <feColorMatrix
+          in="blur"
+          mode="matrix"
+          values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 12 -5"
+          result="title-blobs"
+        />
+        <feBlend in="SourceGraphic" in2="title-blobs" />
+      </filter>
+
+      <filter id="heading-blur">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+        <feComponentTransfer>
+          <feFuncA type="discrete" tableValues="0 0 1 1" />
+        </feComponentTransfer>
+      </filter>
+
+      <filter id="falloff-blur">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+        <feComponentTransfer>
+          <feFuncA type="discrete" tableValues="0 0 1 1" />
+        </feComponentTransfer>
+      </filter>
+
+      <filter id="text-blur">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="1.25" />
+        <feComponentTransfer>
+          <feFuncA type="discrete" tableValues="0 0 1 1" />
+        </feComponentTransfer>
+      </filter>
+
+      <filter id="edge-noise">
+        <feTurbulence
+          type="turbulence"
+          baseFrequency="0.03"
+          numOctaves="2"
+          result="turbulence"
+          seed="0"
+        />
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="turbulence"
+          scale="2"
+          xChannelSelector="R"
+          yChannelSelector="B"
+        />
+      </filter>
+
+      <filter id="edge-noise-animated">
+        <feTurbulence
+          type="turbulence"
+          baseFrequency="0.05"
+          numOctaves="5"
+          result="turbulence"
+          seed="0"
+        >
+          <animate
+            attributeName="seed"
+            values="0;1000"
+            dur="0.1s"
+            repeatCount="indefinite"
+          />
+        </feTurbulence>
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="turbulence"
+          scale="2"
+          xChannelSelector="R"
+          yChannelSelector="B"
+        />
+      </filter>
+    </defs>
+  </svg>
 </html>
