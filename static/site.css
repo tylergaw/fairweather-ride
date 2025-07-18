@@ -132,7 +132,6 @@ html {
 .section-heading {
   font-family: "macabre";
   overflow: hidden;
-  margin-top: 2rem;
   position: relative;
   transform: translateY(1.8rem);
   z-index: 10;
@@ -198,7 +197,7 @@ body {
 [role="banner"] {
   --offset: 0.75rem;
   position: relative;
-  height: calc(100vh - var(--offset));
+  height: calc(100dvh - var(--offset));
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -306,6 +305,7 @@ body {
 }
 
 .banner-marquee b:nth-child(2n) {
+  animation: adhd 0.6s linear infinite alternate;
   font-family: "adhd-hyperactive";
   color: var(--color-accent-primary);
 }
@@ -396,7 +396,7 @@ body {
 
 .meter-well::before,
 .meter-progress::before {
-  border: 2px solid rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--color-foreground);
   content: "";
   display: block;
   filter: url("#edge-noise");
@@ -432,7 +432,7 @@ body {
 }
 
 .progress-percentage {
-  border-right: 1px solid currentColor;
+  border-right: 2px solid currentColor;
   font-size: 0.75rem;
   line-height: 1;
   overflow: hidden;
@@ -451,7 +451,7 @@ body {
 }
 
 .stats {
-  padding: 3rem 0.75rem;
+  padding: 2rem 0.75rem 3rem 0.75rem;
 }
 
 #stats-container {
@@ -502,7 +502,7 @@ body {
 }
 
 .rides {
-  padding: 5rem 0.75rem 2rem 0.75rem;
+  padding: 2rem 0.75rem 2rem 0.75rem;
 }
 
 #rides-list {
