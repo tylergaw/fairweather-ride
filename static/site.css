@@ -608,10 +608,71 @@ body {
   padding-top: 6rem;
 }
 
+.credits a {
+  color: var(--color-background);
+}
+
 .credits-contents {
+  padding: 3.5rem 1.5rem 1.5rem 1.5rem;
+  position: relative;
+}
+
+.credits-inner {
+  position: relative;
+}
+
+.credits-contents::before {
   background-color: var(--color-foreground);
   border-radius: 1rem;
-  padding: 8rem 1rem;
+  content: "";
+  display: block;
+  filter: url("#edge-noise");
+  left: 0;
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.credits h2 {
+  filter: url("#text-blur") url("#edge-noise-animated");
+  font-family: "macabre";
+  font-size: 3.25rem;
+  padding-bottom: 1.25rem;
+  text-align: center;
+}
+
+.credits h2::before,
+.credits h2::after {
+  content: " – ";
+}
+
+.credit-lines {
+  position: relative;
+}
+
+.credit-line {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.credit-line p {
+  flex: 1 1 50%;
+}
+
+.credit-line p:first-of-type {
+  text-align: right;
+}
+
+.credit-line b {
+  font-family: "method-regular";
+}
+
+.credits-byline {
+  font-size: 0.875rem;
+  margin-top: 5rem;
+  text-align: right;
 }
 
 .divider {
