@@ -90,6 +90,13 @@
       </div>
     </div>
 
+    <div class="bike-illo-2">
+      <img
+        src="./static/images/bike-2.svg"
+        alt="A hand drawn/sketchy drawing of a road bike facing the viewer, angled to the right slightly."
+      />
+    </div>
+
     <div class="stats" id="stats">
       <h2 class="section-heading">
         <span class="content">The Stats</span>
@@ -112,6 +119,13 @@
         bikesarefun.com 1000miles bikesarefun go outside touch grass get rekt
         1000miles fuck cars 1,000 miles fairweather ride bikes 1,000
       </div>
+    </div>
+
+    <div class="bike-illo-1">
+      <img
+        src="./static/images/bike-1.svg"
+        alt="A hand drawn/sketchy drawing of a road bike from the side."
+      />
     </div>
 
     <div class="rides" id="rides">
@@ -137,6 +151,13 @@
         grass get rekt 1000miles fairweather ride bikes bikes bikes fuck cars
         1,000
       </div>
+    </div>
+
+    <div class="chainrings-illo">
+      <img
+        src="./static/images/chainrings.svg"
+        alt="A hand drawn/sketchy drawing of a road bike facing the viewer, angled to the right slightly."
+      />
     </div>
 
     <footer class="credits">
@@ -211,21 +232,45 @@
         <feTurbulence
           type="turbulence"
           baseFrequency="0.05"
-          numOctaves="5"
+          numOctaves="3"
           result="turbulence"
           seed="0"
         >
           <animate
             attributeName="seed"
-            values="0;1000"
-            dur="0.1s"
+            values="0;20"
+            dur="2s"
             repeatCount="indefinite"
           />
         </feTurbulence>
         <feDisplacementMap
           in="SourceGraphic"
           in2="turbulence"
-          scale="2"
+          scale="3"
+          xChannelSelector="R"
+          yChannelSelector="B"
+        />
+      </filter>
+
+      <filter id="illo-animated">
+        <feTurbulence
+          type="turbulence"
+          baseFrequency="0.05"
+          numOctaves="10"
+          result="turbulence"
+          seed="0"
+        >
+          <animate
+            attributeName="seed"
+            values="0;25"
+            dur="3s"
+            repeatCount="indefinite"
+          />
+        </feTurbulence>
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="turbulence"
+          scale="3"
           xChannelSelector="R"
           yChannelSelector="B"
         />

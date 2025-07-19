@@ -151,7 +151,7 @@ html {
 
 .section-heading .content {
   display: inline-block;
-  filter: url("#heading-blur") url("#edge-noise");
+  filter: url("#heading-blur") url("#edge-noise-animated");
   padding: 0 0.75rem;
   font-size: 12rem;
   transform: scaleY(1.5);
@@ -160,7 +160,8 @@ html {
 
 .section-heading .falloff {
   display: inline-flex;
-  filter: url("#falloff-blur") url("#edge-noise");
+  filter: url("#falloff-blur") url("#edge-noise-animated");
+  transform: translateX(-1rem);
 }
 
 .section-heading .falloff span {
@@ -463,7 +464,7 @@ body {
 }
 
 .stats {
-  padding: 2rem 0.75rem 3rem 0.75rem;
+  padding: 0 0.75rem 3rem 0.75rem;
 }
 
 #stats-container {
@@ -490,7 +491,7 @@ body {
   content: "";
   display: block;
   flex: 1;
-  filter: url("#edge-noise-animated");
+  filter: url("#edge-noise");
   height: 100%;
   position: absolute;
   width: 100%;
@@ -514,7 +515,7 @@ body {
 }
 
 .rides {
-  padding: 2rem 0.75rem 2rem 0.75rem;
+  padding: 0 0.75rem 4rem 0.75rem;
 }
 
 #rides-list {
@@ -527,7 +528,6 @@ body {
 }
 
 .ride a {
-  background: var(--color-foreground);
   border-radius: 1rem;
   display: grid;
   overflow: hidden;
@@ -536,8 +536,19 @@ body {
   text-decoration: none;
 }
 
+.ride a::before {
+  background: var(--color-foreground);
+  border-radius: 1rem;
+  content: "";
+  display: block;
+  filter: url("#edge-noise");
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
 .ride :where(a:hover, a:focus) {
-  outline: 3px solid var(--color-accent-primary);
+  outline: 4px solid var(--color-accent-primary);
 }
 
 .ride :where(a:hover, a:focus) .ride-distance {
@@ -586,14 +597,15 @@ body {
 .ride img {
   grid-area: 1 / 1;
   height: auto;
+  position: relative;
   transition: scale 0.2s ease;
   width: 100%;
 }
 
 .credits {
   color: var(--color-background);
-  margin-top: 3.5rem;
   padding: 0.75rem;
+  padding-top: 6rem;
 }
 
 .credits-contents {
@@ -615,4 +627,130 @@ body {
   font-family: "adhd-focused";
   transform: scaleX(1.25);
   white-space: nowrap;
+}
+
+.bike-illo-1 img,
+.bike-illo-2 img,
+.chainrings-illo img {
+  filter: url("#illo-animated");
+}
+
+.bike-illo-1 {
+  --path: polygon(
+    0% 58%,
+    2% 50%,
+    4% 45%,
+    22% 35%,
+    27% 22%,
+    28% 5%,
+    34% 4%,
+    50% 13%,
+    68% 11%,
+    74% 0,
+    81% 0,
+    87% 25%,
+    87% 32%,
+    82% 36%,
+    83% 38%,
+    95% 42%,
+    98% 49%,
+    100% 65%,
+    100% 85%,
+    95% 95%,
+    90% 100%,
+    75% 100%,
+    64% 90%,
+    53% 99%,
+    49% 93%,
+    49% 86%,
+    40% 84%,
+    40% 92%,
+    25% 100%,
+    14% 100%,
+    8% 95%,
+    0% 82%
+  );
+  background: var(--color-background);
+  clip-path: var(--path);
+  position: absolute;
+  right: 5%;
+  transform: translateY(-130px);
+  width: 300px;
+}
+
+.bike-illo-2 {
+  --path: polygon(
+    1% 40%,
+    5% 34%,
+    15% 30%,
+    12% 25%,
+    20% 18%,
+    37% 16%,
+    42% 7%,
+    53% 0,
+    64% 0,
+    69% 7%,
+    75% 2%,
+    85% 2%,
+    93% 8%,
+    97% 15%,
+    100% 15%,
+    100% 20%,
+    94% 35%,
+    80% 32%,
+    78% 25%,
+    73% 23%,
+    74% 35%,
+    78% 39%,
+    85% 60%,
+    85% 80%,
+    80% 95%,
+    72% 100%,
+    55% 98%,
+    49% 80%,
+    49% 60%,
+    54% 50%,
+    38% 62%,
+    40% 70%,
+    33% 80%,
+    18% 80%,
+    10% 77%,
+    3% 70%,
+    0 50%
+  );
+  background: var(--color-background);
+  clip-path: var(--path);
+  left: calc(75% - 100px);
+  position: absolute;
+  transform: translateY(-130px);
+  width: 230px;
+}
+
+.chainrings-illo {
+  --path: polygon(
+    25% 2%,
+    48% 0,
+    70% 0,
+    80% 5%,
+    90% 15%,
+    99% 40%,
+    100% 50%,
+    92% 80%,
+    89% 85%,
+    80% 95%,
+    60% 98%,
+    50% 100%,
+    25% 96%,
+    15% 85%,
+    5% 80%,
+    3% 50%,
+    10% 20%,
+    20% 8%
+  );
+  background: var(--color-background);
+  clip-path: var(--path);
+  left: calc(50% - 60px);
+  position: absolute;
+  transform: translateY(-72px);
+  width: 120px;
 }
