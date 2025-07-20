@@ -1,5 +1,9 @@
 import rides from "./data/rides.json" with { type: "json" };
 
+Splitting({
+	whitespace: true
+})
+
 const mapboxToken =
   "pk.eyJ1IjoidHlsZXJnYXciLCJhIjoiY21kM3lwbGd5MDlqNDJtbjEwNXFsbGd4MyJ9.6LeDAzHAMcLJoLi1UQ2O_A";
 

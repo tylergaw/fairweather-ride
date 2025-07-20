@@ -787,6 +787,18 @@ body {
   width: 230px;
 }
 
+.chainrings {
+  --size: 180px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  left: calc(50% - 60px);
+  position: absolute;
+  transform: translateY(-100px);
+  height: var(--size);
+  width: var(--size);
+}
+
 .chainrings-illo {
   --path: polygon(
     25% 2%,
@@ -810,8 +822,32 @@ body {
   );
   background: var(--color-background);
   clip-path: var(--path);
-  left: calc(50% - 60px);
-  position: absolute;
-  transform: translateY(-72px);
   width: 120px;
+}
+
+.chainrings-text {
+  --font-size: 1rem;
+  animation: spin 7s linear infinite;
+  border-radius: 50%;
+  font-family: "adhd-focused";
+  font-size: var(--font-size);
+  filter: url("#text-blur");
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: var(--size);
+  height: var(--size);
+}
+
+.chainrings-text .char {
+  --i: calc(100% / (var(--char-total) + 1));
+  position: absolute;
+  offset-path: circle(calc(var(--size) * 0.5 - var(--font-size)));
+  offset-distance: calc(var(--i) * var(--char-index));
+}
+
+@keyframes spin {
+  to {
+    rotate: 359deg;
+  }
 }
