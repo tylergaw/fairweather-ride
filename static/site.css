@@ -790,6 +790,7 @@ body {
 .chainrings {
   --size: 180px;
   align-items: center;
+  background: var(--color-background);
   display: flex;
   justify-content: center;
   left: calc(50% - 60px);
@@ -800,28 +801,6 @@ body {
 }
 
 .chainrings-illo {
-  --path: polygon(
-    25% 2%,
-    48% 0,
-    70% 0,
-    80% 5%,
-    90% 15%,
-    99% 40%,
-    100% 50%,
-    92% 80%,
-    89% 85%,
-    80% 95%,
-    60% 98%,
-    50% 100%,
-    25% 96%,
-    15% 85%,
-    5% 80%,
-    3% 50%,
-    10% 20%,
-    20% 8%
-  );
-  background: var(--color-background);
-  clip-path: var(--path);
   width: 120px;
 }
 
