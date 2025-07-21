@@ -271,6 +271,7 @@ body {
 }
 
 .title-ride {
+  display: block;
   letter-spacing: -0.46vw;
 }
 
@@ -290,6 +291,7 @@ body {
   filter: url("#edge-noise");
   line-height: 1;
   padding-left: 0.3rem;
+  padding-bottom: 0.25rem;
   opacity: 0.9;
   text-transform: none;
 }
@@ -308,6 +310,10 @@ body {
     transform: translateY(-9.2vw);
     float: right;
     width: 53.6%;
+  }
+
+  .title-ride {
+    display: initial;
   }
 
   .title-year {
@@ -452,16 +458,16 @@ body {
 }
 
 .progress {
-  padding: 0 0.75rem 3rem 0.75rem;
+  padding: 0 0.75rem 2rem 0.75rem;
 }
 
 .meter {
   height: 4rem;
 }
 
-@media (min-width: 550px) {
+@media (min-width: 600px) {
   .progress {
-    padding-top: 1.5rem;
+    padding: 1.5rem 0.75rem 3rem 0.75rem;
   }
 
   .meter {
@@ -524,22 +530,28 @@ body {
   width: var(--percent-complete, 0);
 }
 
-.progress-ticks {
-  display: flex;
-  font-family: "method-regular";
-  justify-content: space-between;
-  padding: 0.25rem 0.5rem;
-  transform: translateY(-1.4rem);
-}
-
 .stats {
-  padding: 0 0.75rem 3rem 0.75rem;
+  padding-bottom: 3rem;
 }
 
-#stats-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.25rem;
+.h-scroll-wrapper {
+  overflow-x: auto;
+  padding: 0 0 1rem 0.75rem;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 0.75rem;
+}
+
+#stats-container,
+#rides-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+}
+
+#stats-container::after {
+  content: "";
+  flex-shrink: 0;
+  width: 0.75rem;
 }
 
 .stat {
@@ -547,11 +559,14 @@ body {
   color: var(--color-background);
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   justify-content: center;
   min-height: 300px;
   padding: 1rem;
   position: relative;
+  scroll-snap-align: start;
   text-align: center;
+  width: 87vw;
 }
 
 .stat::before {
@@ -588,9 +603,6 @@ body {
 }
 
 #rides-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.25rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -614,6 +626,36 @@ body {
   position: absolute;
   height: 100%;
   width: 100%;
+}
+
+@media (min-width: 600px) {
+  .h-scroll-wrapper {
+    overflow-x: initial;
+    padding: 0;
+    scroll-snap-type: initial;
+    scroll-padding-left: 0;
+  }
+
+  .stats {
+    padding: 0 0.75rem 3rem 0.75rem;
+  }
+
+  #stats-container,
+  #rides-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+
+  #stats-container::after,
+  #rides-list::after {
+    display: none;
+  }
+
+  .stat {
+    flex-shrink: initial;
+    width: auto;
+  }
 }
 
 .ride :where(a:hover, a:focus) {

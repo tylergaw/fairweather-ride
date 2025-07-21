@@ -75,10 +75,6 @@
         </div>
       </div>
       <div id="progress-percentage" class="progress-percentage"></div>
-      <div class="progress-ticks">
-        <span class="progress-tick">0</span>
-        <span class="progress-tick">1,000 miles</span>
-      </div>
     </div>
 
     <div class="divider" aria-hidden="true">
@@ -110,7 +106,9 @@
           <span>Stats</span>
         </div>
       </h2>
-      <div id="stats-container"></div>
+      <div class="h-scroll-wrapper">
+        <div id="stats-container"></div>
+      </div>
     </div>
 
     <div class="divider" aria-hidden="true">
@@ -141,7 +139,9 @@
           <span>Rides</span>
         </div>
       </h2>
-      <ol id="rides-list" reversed></ol>
+      <div class="h-scroll-wrapper">
+        <ol id="rides-list" reversed></ol>
+      </div>
     </div>
 
     <div class="divider" aria-hidden="true">
