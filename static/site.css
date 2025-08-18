@@ -162,24 +162,6 @@ html {
 .section-heading .falloff {
   display: none;
   filter: url("#falloff-blur") url("#edge-noise-animated");
-  transform: translateX(-1rem);
-}
-
-@media (min-width: 600px) {
-  .section-heading {
-    transform: translateY(1.8rem);
-  }
-
-  .section-heading .content {
-    display: inline-block;
-    filter: url("#heading-blur") url("#edge-noise-animated");
-    padding: 0 0.75rem;
-    text-align: left;
-  }
-
-  .section-heading .falloff {
-    display: inline-flex;
-  }
 }
 
 .section-heading .falloff span {
@@ -235,6 +217,7 @@ body {
 }
 
 .banner-contents {
+  align-items: center;
   background: var(--color-accent-primary);
   border-radius: 1rem 1rem 0 0;
   display: flex;
@@ -250,18 +233,40 @@ body {
 }
 
 .banner-title {
+  --font-size-max: 180px;
+  --max-width: 575px;
   color: var(--color-background);
-  font-size: min(25vw, 180px);
+  font-size: min(25vw, var(--font-size-max));
   line-height: 0.8;
-  padding-top: 2rem;
   margin: 0;
-  max-width: 575px;
+  max-width: var(--max-width);
   overflow: hidden;
   position: absolute;
   text-align: center;
   text-transform: uppercase;
   word-break: break-all;
   z-index: 2;
+}
+
+@media (max-height: 810px) {
+  .banner-title {
+    --font-size-max: 140px;
+    --max-width: 550px;
+  }
+}
+
+@media (max-height: 680px) {
+  .banner-title {
+    --font-size-max: 100px;
+    --max-width: 425px;
+  }
+}
+
+@media (max-height: 490px) {
+  .banner-title {
+    --font-size-max: 80px;
+    --max-width: 325px;
+  }
 }
 
 .title-effected {
@@ -481,16 +486,6 @@ body {
   height: 4rem;
 }
 
-@media (min-width: 600px) {
-  .progress {
-    padding: 1.5rem 0.75rem 3rem 0.75rem;
-  }
-
-  .meter {
-    height: 5.5rem;
-  }
-}
-
 .meter-well {
   border-radius: 4rem;
   overflow: hidden;
@@ -530,7 +525,7 @@ body {
 }
 
 .meter-complete-display {
-  font-size: clamp(1rem, 4vw, 2.25rem);
+  font-size: clamp(1rem, 4.5vw, 2.25rem);
   font-family: "adhd-distracted";
   position: relative;
 }
@@ -546,7 +541,8 @@ body {
   width: var(--percent-complete, 0);
 }
 
-.stats {
+.stats,
+.rides {
   padding-bottom: 2rem;
 }
 
@@ -562,6 +558,9 @@ body {
   display: flex;
   flex-wrap: nowrap;
   gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 #stats-container::after {
@@ -570,19 +569,23 @@ body {
   width: 0.75rem;
 }
 
+.stat,
+.ride {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  width: 87vw;
+}
+
 .stat {
   align-items: center;
   color: var(--color-background);
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
   justify-content: center;
   min-height: 300px;
   padding: 1rem;
   position: relative;
-  scroll-snap-align: start;
   text-align: center;
-  width: 87vw;
 }
 
 .stat::before {
@@ -614,14 +617,8 @@ body {
   font-size: 75%;
 }
 
-.rides {
-  padding: 0 0.75rem 4rem 0.75rem;
-}
-
-#rides-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.ride {
+  padding-top: 4px;
 }
 
 .ride a {
@@ -642,36 +639,6 @@ body {
   position: absolute;
   height: 100%;
   width: 100%;
-}
-
-@media (min-width: 600px) {
-  .h-scroll-wrapper {
-    overflow-x: initial;
-    padding: 0;
-    scroll-snap-type: initial;
-    scroll-padding-left: 0;
-  }
-
-  .stats {
-    padding: 0 0.75rem 3rem 0.75rem;
-  }
-
-  #stats-container,
-  #rides-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.25rem;
-  }
-
-  #stats-container::after,
-  #rides-list::after {
-    display: none;
-  }
-
-  .stat {
-    flex-shrink: initial;
-    width: auto;
-  }
 }
 
 .ride :where(a:hover, a:focus) {
@@ -732,7 +699,7 @@ body {
 .credits {
   color: var(--color-background);
   padding: 0.75rem;
-  padding-top: 6rem;
+  padding-top: 7rem;
 }
 
 .credits a {
@@ -798,8 +765,13 @@ body {
 
 .credits-byline {
   font-size: 0.875rem;
-  margin-top: 5rem;
-  text-align: right;
+  padding: 4.5rem 2rem 2.5rem 2rem;
+  text-align: center;
+}
+
+.credits-byline a {
+  display: inline-block;
+  padding: 0 0.33rem;
 }
 
 .divider {
@@ -959,16 +931,83 @@ body {
 }
 
 @media (min-width: 600px) {
+  .progress {
+    padding: 1.5rem 0.75rem 3rem 0.75rem;
+  }
+
+  .meter {
+    height: 5.5rem;
+  }
+
+  .section-heading {
+    margin-top: 0;
+    transform: translateY(3.5rem);
+  }
+
+  .section-heading .content {
+    display: inline-block;
+    filter: url("#heading-blur") url("#edge-noise-animated");
+    padding: 0 0.75rem;
+    text-align: left;
+  }
+
+  .section-heading .falloff {
+    display: flex;
+    margin-bottom: -1rem;
+    scale: 0.75;
+    transform: translate(-4.75rem, -4rem);
+  }
+
+  .h-scroll-wrapper {
+    overflow-x: initial;
+    padding: 0;
+    scroll-snap-type: initial;
+    scroll-padding-left: 0;
+  }
+
+  .stats,
+  .rides {
+    padding: 0 0.75rem 4.75rem 0.75rem;
+  }
+
+  #stats-container,
+  #rides-list {
+    --item-min-width: 300px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--item-min-width), 1fr));
+    gap: 1.25rem;
+  }
+
+  #rides-list {
+    --item-min-width: 275px;
+  }
+
+  #stats-container::after,
+  #rides-list::after {
+    display: none;
+  }
+
+  .stat,
+  .ride {
+    flex-shrink: initial;
+    width: auto;
+  }
+
+  .ride {
+    padding-top: 0;
+  }
+
   .bike-illo-2 {
-    left: calc(75% - 100px);
-    transform: translateY(-130px);
-    width: 230px;
+    left: calc(75% - 60px);
+    transform: translateY(-100px);
+    width: 160px;
   }
 
   .bike-illo-1 {
-    right: 5%;
-    transform: translateY(-130px);
-    width: 300px;
+    left: initial;
+    right: 10%;
+    transform: translateY(-100px);
+    width: 240px;
   }
 
   .chainrings {
@@ -983,5 +1022,55 @@ body {
 
   .chainrings-text {
     --font-size: 1rem;
+  }
+}
+
+@media (min-width: 730px) {
+  .section-heading .falloff {
+    scale: 1;
+    transform: translate(1rem, -3rem);
+  }
+}
+
+@media (min-width: 930px) {
+  .section-heading {
+    margin-top: 2rem;
+    transform: translateY(2rem);
+  }
+
+  .section-heading .falloff {
+    display: inline-flex;
+    margin-bottom: 0;
+    transform: translate(-1rem, 1.5rem);
+  }
+
+  .bike-illo-2 {
+    left: calc(75% - 100px);
+    transform: translateY(-110px);
+    width: 280px;
+  }
+
+  .bike-illo-1 {
+    right: 10%;
+    transform: translateY(-110px);
+    width: 400px;
+  }
+}
+
+@media (min-width: 1280px) {
+  #stats-container {
+    --item-min-width: 400px;
+  }
+}
+
+@media (min-width: 1680px) {
+  #stats-container {
+    --item-min-width: 500px;
+  }
+}
+
+@media (min-width: 2080px) {
+  #stats-container {
+    --item-min-width: 650px;
   }
 }

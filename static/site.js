@@ -105,10 +105,6 @@ function renderStats() {
   }<small>hr</small> ${timeParts.minutes}<small>min</small></span>
     </div>
     <div class="stat">
-      <span class="stat-title">Times hit by a car</span>
-      <span class="stat-detail">1</span>
-    </div>
-    <div class="stat">
       <span class="stat-title">Boroughs</span>
       <span class="stat-detail">4</span>
       <small>(we don’t go to that other one)</small>
