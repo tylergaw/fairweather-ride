@@ -1,4 +1,9 @@
-import rides from "./data/rides.json" with { type: "json" };
+import dataRaw from "./data/rides.json" with { type: "json" };
+
+/*
+  Make sure we're not getting Walks or any other activity.
+*/
+const rides = dataRaw.filter(ride => ride.sport_type === 'Ride')
 
 Splitting({
 	whitespace: true
@@ -22,8 +27,6 @@ function renderRides() {
   }
 
   el.innerHTML = rides.reduce((html, ride, i) => {
-    if (ride.sport_type !== "Ride") return html;
-
     const style = "dark-v11"; // streets-v12
     const strokeWidth = "2";
     const strokeColor = "ff0055";
@@ -71,7 +74,7 @@ function renderStats() {
     totalTime += rides[i].moving_time;
   }
 
-  distances.sort();
+  distances.sort((a, b) => a - b);
   const avgDistance = totalDistance / numRides;
   const timeParts = getTimeParts(totalTime);
 
