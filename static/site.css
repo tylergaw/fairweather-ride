@@ -588,6 +588,10 @@ body {
   text-align: center;
 }
 
+.stat-extra {
+  display: none;
+}
+
 .stat::before {
   background: var(--color-accent-primary);
   border-radius: 1rem;
@@ -991,6 +995,10 @@ body {
   .ride {
     flex-shrink: initial;
     width: auto;
+  }
+
+  .stat-extra {
+    display: inherit;
   }
 
   .ride {
