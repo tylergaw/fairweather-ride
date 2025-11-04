@@ -2,6 +2,8 @@
 
 A silly website about tyler and his bike.
 
+I wrote about the more interesting parts of the build at [tylergaw.com/blog/fairweather-ride-2025](https://tylergaw.com/blog/fairweather-ride-2025/)
+
 ## Technology overview
 
 - HTML, CSS, JavaScript
